@@ -146,54 +146,102 @@ The results provided information relating to:
 
 This exercise demonstrated the importance of DNS information during the early stages of a security assessment.
 
----
-
 ## 2. Network Scanning and Host Discovery with Zenmap
 
 ### Overview
 
-The second practical exercise focused on identifying active devices connected to my local network.
+The second practical exercise focused on examining my Windows 11 machine using Zenmap, the graphical interface for Nmap. The scan was performed to identify open TCP ports, associated services, and operating system information.
 
-Zenmap was used to visualize the scanning process and identify hosts responding within the selected subnet.
+This exercise provided practical experience in understanding how network scanning can reveal a host's exposed services and provide useful information for security assessment.
 
-### 2.1 Identifying the Local Network
+### 2.1 Identifying the Local Network Configuration
 
-Before beginning the scan, the Windows Command Prompt was used to obtain the local network configuration.
-
-The following command was executed:
+Before initiating the scan, I used the Windows Command Prompt to retrieve my network configuration.
 
 ```cmd
 ipconfig
 ```
 
-This helped identify the local IP address and network configuration required to determine the appropriate scanning range.
+The command returned the following information:
 
-### 2.2 Discovering Active Hosts
+| Network Configuration | Result |
+|---|---|
+| IPv4 Address | `10.176.196.83` |
+| Subnet Mask | `255.255.255.0` |
+| Network Prefix | `/24` |
+| Operating System | Windows 11 |
 
-After identifying the network subnet, it was entered into Zenmap for host discovery.
+These details helped me understand the network configuration of the machine selected for the practical exercise.
 
-The **Ping Scan** option was selected to identify devices responding within the specified network range.
+### 2.2 Port Scanning and Service Identification
 
-The sample practical results showed the following active hosts:
+I used Zenmap to scan my Windows 11 machine and examine the TCP ports that were accessible during the assessment.
 
-| No. | IP Address |
-| --- | ---------- |
-| 1   | 10.0.0.1   |
-| 2   | 10.0.0.4   |
-| 3   | 10.0.0.19  |
-| 4   | 10.0.0.5   |
+The scan identified four open TCP ports and reported 996 closed TCP ports.
 
-The example results also contained MAC address information for the discovered devices.
+The following table summarizes the open ports and their associated services.
 
-> **Important:** These addresses are sample results from the reference practical. Replace them with the actual IP addresses and MAC addresses obtained from your own authorized network scan before publishing your project.
+| Port | State | Service | Description |
+|---|---|---|---|
+| 135/TCP | Open | MSRPC | Microsoft Windows RPC |
+| 139/TCP | Open | NetBIOS-SSN | Microsoft Windows NetBIOS Session Service |
+| 445/TCP | Open | Microsoft-DS | Microsoft SMB-related service |
+| 5357/TCP | Open | HTTP | Microsoft HTTPAPI 2.0 |
 
-### 2.3 Network Topology Visualization
+These results demonstrated how port scanning can help identify network-accessible services running on a Windows machine.
 
-Following the host discovery exercise, the Topology section in Zenmap was used to visualize the discovered network devices.
+### 2.3 Operating System Detection
 
-The topology view was configured with the legend enabled, and the resulting network diagram was saved in PDF format as part of the practical documentation.
+Zenmap also performed operating system detection and identified the scanned host as Microsoft Windows 11.
 
-This provided a visual representation of the discovered network environment and demonstrated how network topology visualization can support network documentation and security analysis.
+The scan returned the following information:
+
+| Detection Parameter | Result |
+|---|---|
+| Operating System | Microsoft Windows 11 |
+| OS Details | Windows 11 24H2 – 25H2 |
+| Device Type | General Purpose |
+| Network Distance | 0 Hops |
+| Host Status | Up |
+
+The operating system detection feature provided additional information about the scanned machine and helped demonstrate how Nmap can identify characteristics of a target host.
+
+### 2.4 SMB Security Observation
+
+The host script results included an observation relating to Server Message Block (SMB) security configuration.
+
+```text
+SMB Message Signing: Enabled and Required
+```
+
+This indicated that SMB message signing was enabled and required on the scanned Windows machine.
+
+The finding provided an opportunity to understand how network scanning can reveal security-related configuration information and support further assessment of a system's network services.
+
+### 2.5 Scan Summary
+
+The following table presents a summary of the scan results.
+
+| Scan Metric | Result |
+|---|---|
+| IP Address Scanned | `10.176.196.83` |
+| Hosts Scanned | 1 |
+| Open TCP Ports | 4 |
+| Closed TCP Ports | 996 |
+| Total TCP Ports Reported | 1,000 |
+| Scan Duration | 22.05 seconds |
+| Raw Packets Sent | 1,016 |
+| Raw Packets Received | 2,044 |
+
+The scan completed successfully and provided information about the host's open ports, services, and operating system.
+
+### 2.6 Network Scanning Observation
+
+The exercise focused on a single Windows 11 host rather than discovering multiple devices across the entire local network.
+
+The four open ports represented services available on the scanned machine, not four separate network devices.
+
+This distinction helped me better understand the difference between host discovery and port scanning during a network security assessment.
 
 ---
 
@@ -203,24 +251,28 @@ The reconnaissance and network discovery activities revealed several observation
 
 The findings below represent potential security considerations rather than confirmed vulnerabilities.
 
-| No. | Observation                                                     | Security Implication                                                                                     | Risk Level |
-| --- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------- |
-| 1   | Website technology information was identified through WhatWeb.  | Public technology details may assist further software security research and assessment.                  | Medium     |
-| 2   | The domain resolved to an identifiable IP address.              | The IP address provides information about the network location of the web service.                       | Low        |
-| 3   | HTTP headers and the `/wp-json/` endpoint were observable.      | Application responses may expose technical information useful during further enumeration.                | Low        |
-| 4   | ModSecurity was identified by Wafw00f.                          | Identification of the WAF technology provides information about the application's security architecture. | Low        |
-| 5   | DNSRecon collected DNS and service-related records.             | DNS information may contribute to a broader understanding of the domain's infrastructure.                | Medium     |
-| 6   | Multiple devices were discovered during local network scanning. | Unrecognized or unmanaged devices may require further investigation and verification.                    | Medium     |
+| No. | Observation | Security Implication | Risk Level |
+|---|---|---|---|
+| 1 | Website technologies were identified through WhatWeb, including WordPress and WP Download Manager. | Public technology information may assist further software security research and assessment. | Medium |
+| 2 | The domain resolved to an identifiable IP address (`192.232.216.135`). | The IP address provides information about the network location of the web service. | Low |
+| 3 | HTTP response headers and the `/wp-json/` endpoint were observable. | Application responses may expose technical information useful during further enumeration. | Low |
+| 4 | ModSecurity was identified by Wafw00f. | Identification of the WAF technology provides information about the application's security architecture. | Low |
+| 5 | DNSRecon collected DNS and service-related records. | DNS information may contribute to a broader understanding of the domain's infrastructure. | Medium |
+| 6 | Zenmap identified four open TCP ports on the scanned Windows 11 machine: 135, 139, 445, and 5357. | Network-accessible services should be reviewed to confirm that they are necessary and appropriately configured. | Medium |
+| 7 | Microsoft RPC, NetBIOS Session Service, SMB-related functionality, and HTTPAPI were identified. | Service identification provides information about the host's network exposure and may support further security assessment. | Medium |
+| 8 | SMB message signing was reported as enabled and required. | This represents a security configuration observation relevant to assessing Windows network services. | Informational |
 
 ### Risk Assessment Notes
 
-The observations recorded during these exercises should not automatically be interpreted as security weaknesses.
+The findings in this report reflect observations from reconnaissance and network scanning, not confirmed vulnerabilities.
 
-Identifying a software platform, IP address, DNS record, or security technology does not independently establish that a system is vulnerable.
+The identification of website technologies, DNS records, open ports, or network services does not independently establish that a system is vulnerable.
 
-The activities covered information gathering and network discovery only. No exploitation or vulnerability validation was performed during these modules.
+The practical exercises focused on information gathering, service identification, and host scanning. No exploitation or vulnerability validation was performed.
 
-Any suspected security issue would require additional authorized investigation before being classified as a confirmed vulnerability.
+Any potential security weakness would require additional authorized investigation before being classified as a confirmed vulnerability.
+
+
 
 ---
 
