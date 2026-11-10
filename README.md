@@ -399,44 +399,27 @@ Screenshots and supporting materials from the practical exercises are organized 
 
 ### Evidence Directory Structure
 
-```text
 Week-02-Footprinting-Network-Scanning/
+<img width="1917" height="982" alt="Image" src="https://github.com/user-attachments/assets/f7d5d6a4-e3c2-414e-b7ab-149e311999ba" />
 
-```
+<img width="1917" height="987" alt="Image" src="https://github.com/user-attachments/assets/11f7247d-05bd-4ba5-a37f-61c962eaabf2" />
 
-### Evidence Included
+<img width="1912" height="975" alt="Image" src="https://github.com/user-attachments/assets/ef09ac90-2f89-4c3f-a6bc-e627254fe580" />
 
-The supporting documentation may include:
+<img width="1917" height="897" alt="Image" src="https://github.com/user-attachments/assets/77c1f65f-0728-4e90-9207-b8dd0bf330af" />
 
-- WHOIS domain information output.
-- WhatWeb website technology identification results.
-- Nslookup domain resolution output.
-- Curl HTTP response header results.
-- Wafw00f Web Application Firewall identification output.
-- DNSRecon DNS enumeration results.
-- Zenmap open port and service identification results.
-- Windows 11 operating system detection results.
-- SMB message signing observation.
-- Zenmap scan summary and supporting screenshots.
+<img width="1917" height="907" alt="Image" src="https://github.com/user-attachments/assets/120faf4c-b9b3-4d6d-b37d-c136edd23a7e" />
 
-The evidence provides a visual record of the practical exercises and supports the findings documented in this report.
+<img width="1912" height="906" alt="Image" src="https://github.com/user-attachments/assets/0089fe72-fa23-49bb-a8d8-c79f803ae336" />
+
+<img width="1905" height="991" alt="Image" src="https://github.com/user-attachments/assets/af99c513-cd4c-4aac-abf6-4d5a03ef65d2" />
+
+<img width="1907" height="976" alt="Image" src="https://github.com/user-attachments/assets/1d529260-90c1-4eaa-acf1-56ee261b69c1" />
+
+<img width="729" height="732" alt="Image" src="https://github.com/user-attachments/assets/8e805c81-6a70-4f66-a69c-c9ee81412fa2" />
 
 
-
-
-
-## 7. Evidence and Documentation
-
-Screenshots and supporting evidence from the practical exercises should be organized in this section.
-
-Suggested evidence structure:
-
-```text
-Week-02-Footprinting-Network-Scanning/
-
-```
-
-Evidence may include:
+Evidence includes:
 
 - WHOIS output
 - WhatWeb technology identification results
@@ -447,14 +430,14 @@ Evidence may include:
 - Zenmap host discovery screenshots
 - Network topology PDF
 
----
 
 ## Author
 
-**Name:** [Your Name]
-**Role:** Aspiring Cybersecurity Professional
+**Name:** Bright Arthur
+**Role:** Cybersecurity Professional Intern
 **Program:** Networkwalks Cybersecurity Internship
 **Project:** Week 02 – Footprinting & Network Scanning
+**LinkedIn:** [Bright Arthur](https://www.linkedin.com/in/brightarthur/)
 
 ## Disclaimer
 
@@ -462,6 +445,5 @@ This repository is intended for educational and research purposes. All security 
 
 The author does not support or encourage unauthorized access, malicious activities, or the misuse of cybersecurity tools.
 
----
 
 *Documented as part of my ongoing cybersecurity learning journey.*
