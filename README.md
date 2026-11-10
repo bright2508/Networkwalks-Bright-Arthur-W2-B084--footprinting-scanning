@@ -272,113 +272,158 @@ The practical exercises focused on information gathering, service identification
 
 Any potential security weakness would require additional authorized investigation before being classified as a confirmed vulnerability.
 
-
-
----
-
 ## 4. Security Recommendations
 
-Based on the observations made during the practical exercises, the following security measures are recommended.
+Based on the findings from the footprinting, reconnaissance, and network scanning exercises, the following security measures are recommended to improve the protection and management of web applications and network systems.
 
 ### 4.1 Review Publicly Exposed Technology Information
 
-Organizations should periodically evaluate the technical information their websites disclose publicly, including information about application platforms, plugins, and supporting technologies.
+Organizations should regularly assess the technical information their websites make publicly available. Details relating to content management systems, plugins, and supporting technologies should be reviewed to identify unnecessary information exposure.
 
 ### 4.2 Maintain Updated Software
 
-Web applications, content management systems, plugins, and supporting components should be regularly updated.
+Web applications, content management systems, plugins, and supporting components should be kept up to date. Regular updates help address known security weaknesses and improve the overall security of the application environment.
 
-Security advisories should be reviewed to identify relevant patches and potential security improvements.
+### 4.3 Strengthen HTTP Security Configuration
 
-### 4.3 Evaluate HTTP Response Headers
+HTTP response headers should be reviewed to identify unnecessary technical information and assess the availability of appropriate security headers. Organizations should apply suitable security configurations to help protect their web applications.
 
-HTTP response headers should be examined to determine whether unnecessary technical information is exposed.
+### 4.4 Review and Secure DNS Configurations
 
-Where appropriate, organizations should implement suitable security headers and review their configuration.
-
-### 4.4 Regularly Audit DNS Records
-
-DNS configurations should be reviewed periodically to ensure that records remain accurate and that unnecessary services or information are not exposed.
+DNS records should be reviewed periodically to ensure that they are accurate, properly configured, and limited to required services. Unnecessary DNS records and service information should be evaluated to reduce avoidable information exposure.
 
 ### 4.5 Configure and Monitor Web Application Firewalls
 
-Organizations should maintain appropriate WAF configurations and review their effectiveness.
+Web Application Firewalls should be properly configured and regularly monitored to support the protection of web applications against malicious traffic and common web-based attacks.
 
-Where ModSecurity is deployed, its rules should be properly configured, monitored, and maintained to support the organization's security requirements.
+Where ModSecurity is deployed, its security rules should be maintained and reviewed to ensure that the configuration remains appropriate for the application environment.
 
-### 4.6 Perform Periodic Internal Network Discovery
+### 4.6 Review Open Network Ports and Running Services
 
-Regular network discovery exercises can help organizations maintain visibility into connected devices and identify unexpected changes within their infrastructure.
+The Zenmap scan identified four open TCP ports on the Windows 11 machine: 135, 139, 445, and 5357.
 
-### 4.7 Investigate Unrecognized Network Devices
+These ports are associated with Microsoft RPC, NetBIOS Session Service, SMB-related functionality, and HTTPAPI.
 
-Devices that cannot be immediately identified should be investigated to establish their ownership, purpose, and authorization status.
+It is recommended that network administrators review these services to confirm that they are necessary for the machine's intended operation. Unnecessary services should be disabled, while required services should be appropriately configured and monitored.
 
-### 4.8 Maintain Accurate Network Documentation
+### 4.7 Strengthen Windows Network Security
 
-Network diagrams, device inventories, IP address assignments, and related infrastructure documentation should be maintained and updated whenever changes occur.
+The identification of Windows network services highlights the importance of maintaining appropriate security configurations on Windows systems.
 
-### 4.9 Ensure Proper Authorization for Security Testing
+Organizations should review firewall settings, restrict network service access to trusted environments where appropriate, and ensure that operating systems receive regular security updates.
 
-All reconnaissance, scanning, and security assessment activities should be conducted within a clearly defined and approved scope.
+### 4.8 Maintain Appropriate SMB Security Configuration
 
----
+The scan indicated that SMB message signing was enabled and required on the examined Windows machine.
+
+This configuration should be maintained and periodically reviewed as part of Windows network security management. Organizations should also ensure that SMB access is appropriately restricted to authorized systems and users.
+
+### 4.9 Monitor Network Devices and Maintain Accurate Documentation
+
+Organizations should regularly review connected devices, maintain accurate IP address assignments, and document network infrastructure.
+
+Unrecognized devices and unexpected changes in network activity should be investigated to establish their legitimacy and authorization status.
+
+### 4.10 Ensure Proper Authorization for Security Testing
+
+All reconnaissance, network scanning, and security assessment activities should be performed within an approved scope and with the necessary authorization.
+
+Security findings should be properly documented, reviewed, and communicated to the relevant system owners.
+
 
 ## 5. Key Learning Outcomes
 
-This practical exercise strengthened my understanding of several fundamental cybersecurity concepts.
+The practical activities completed during Week 02 provided valuable experience in footprinting, reconnaissance, and network scanning. The exercises strengthened my understanding of the following cybersecurity concepts:
 
 ### Footprinting and Reconnaissance
 
-I gained practical exposure to collecting publicly available information about a domain and understanding how different reconnaissance tools contribute to information gathering.
+I developed practical experience in gathering publicly available information about a domain and using different reconnaissance tools to examine its digital footprint.
 
 ### Web Technology Identification
 
-I learned how WhatWeb can identify web application technologies and how this information contributes to an initial understanding of a website's technical environment.
+Using WhatWeb, I learned how to identify website technologies and understand how publicly observable application components contribute to the information available during an assessment.
 
 ### DNS Analysis
 
-Using Nslookup and DNSRecon helped me understand domain resolution and the role DNS records play in identifying infrastructure information.
+The use of Nslookup and DNSRecon improved my understanding of domain resolution, DNS records, and the role of DNS information in identifying domain-related infrastructure.
 
 ### HTTP Response Analysis
 
-Curl provided practical experience in examining HTTP response headers and identifying application-related information exposed through web responses.
+Curl provided practical exposure to retrieving HTTP response headers and identifying application-related information that may be observable through web responses.
 
-### WAF Identification
+### Web Application Firewall Identification
 
-Wafw00f demonstrated how security professionals can identify technologies associated with web application protection.
+Wafw00f introduced me to the process of identifying Web Application Firewall technologies and understanding their role in web application protection.
 
-### Network Discovery
+### Host Scanning and Service Identification
 
-Using Zenmap helped me understand how to discover active devices within a network and identify their associated IP and MAC addresses.
+Using Zenmap, I examined my Windows 11 machine and identified four open TCP ports associated with Microsoft RPC, NetBIOS Session Service, SMB-related functionality, and HTTPAPI.
 
-### Network Topology Visualization
+This exercise helped me understand how port scanning and service identification provide information about a host's network exposure.
 
-I gained experience generating a visual representation of discovered network hosts and documenting network relationships using Zenmap.
+### Operating System Detection
 
-### Security Documentation
+I gained experience interpreting operating system detection results from Nmap and identifying characteristics of the scanned Windows 11 machine.
 
-The exercises reinforced the importance of presenting technical observations clearly, assessing their potential implications, and recommending appropriate security improvements.
+### SMB Security Configuration
+
+The scan revealed that SMB message signing was enabled and required. This helped me understand how network scanning can provide security-related configuration observations about Windows systems.
+
+### Security Documentation and Risk Assessment
+
+The practical reinforced the importance of documenting technical findings accurately, distinguishing observations from confirmed vulnerabilities, and communicating potential security implications professionally.
 
 ### Ethical Security Testing
 
-I developed a stronger appreciation for the importance of authorization, defined assessment boundaries, and responsible use of cybersecurity tools.
+I strengthened my understanding of responsible security testing, authorization requirements, and the importance of conducting assessments within an approved scope.
 
 ---
 
 ## 6. Conclusion
 
-Week 02 provided an opportunity to apply practical cybersecurity techniques in the areas of footprinting, reconnaissance, and network scanning.
+Week 02 provided an opportunity for me to apply practical cybersecurity techniques in footprinting, reconnaissance, and network scanning.
 
-Through the use of multiple Kali Linux tools, I explored how publicly available domain information, website technologies, HTTP responses, and DNS records can contribute to an initial understanding of a target environment.
+Through the use of WHOIS, WhatWeb, Nslookup, Curl, Wafw00f, and DNSRecon, I explored different approaches to gathering publicly available domain information, identifying web technologies, examining HTTP responses, and understanding DNS-related infrastructure.
 
-The Zenmap exercise introduced me to local network discovery, host identification, IP and MAC address analysis, and network topology visualization.
+The Zenmap exercise allowed me to examine my Windows 11 machine, identify four open TCP ports, recognize their associated services, and review operating system detection information. I also observed SMB message signing as enabled and required, providing additional insight into Windows network security configuration.
 
-Beyond the technical activities, the practical strengthened my understanding of how reconnaissance findings should be documented, evaluated, and communicated in a professional security report.
+Beyond the technical activities, these exercises strengthened my ability to interpret scanning results, document observations, assess potential security implications, and recommend appropriate security improvements.
 
-Overall, this project represents an important step in developing my practical cybersecurity skills and building a foundation for further learning in ethical hacking, penetration testing, and network security.
+Overall, this practical represents an important milestone in my cybersecurity learning journey and contributes to building a stronger foundation in ethical hacking, penetration testing, and network security.
 
 ---
+
+## 7. Evidence and Documentation
+
+Screenshots and supporting materials from the practical exercises are organized to provide visual evidence of the activities performed and the results obtained.
+
+### Evidence Directory Structure
+
+```text
+Week-02-Footprinting-Network-Scanning/
+
+```
+
+### Evidence Included
+
+The supporting documentation may include:
+
+- WHOIS domain information output.
+- WhatWeb website technology identification results.
+- Nslookup domain resolution output.
+- Curl HTTP response header results.
+- Wafw00f Web Application Firewall identification output.
+- DNSRecon DNS enumeration results.
+- Zenmap open port and service identification results.
+- Windows 11 operating system detection results.
+- SMB message signing observation.
+- Zenmap scan summary and supporting screenshots.
+
+The evidence provides a visual record of the practical exercises and supports the findings documented in this report.
+
+
+
+
 
 ## 7. Evidence and Documentation
 
